@@ -1,0 +1,26 @@
+```
+export GOOGLE_PROJECT=kyong0612-lab                              2022-10-08 19:54:24
+export REGION=asia-northeast1
+export IMAGE_URL=asia.gcr.io/$GOOGLE_PROJECT/cloud-run-demo:latest
+export JOB_NAME=sample-job
+```
+
+### Image push
+```
+docker image build .  --platform amd64 -t $IMAGE_URL
+docker image push $IMAGE_URL
+```
+
+### Cloud Run Jobs
+```
+gcloud beta run jobs create $JOB_NAME \
+    --image $IMAGE_URL \
+    --project $GOOGLE_PROJECT \
+    --region $REGION
+gcloud beta run jobs execute $JOB_NAME \
+    --project $GOOGLE_PROJECT \
+    --region $REGION
+gcloud beta run jobs delete $JOB_NAME \
+    --project $GOOGLE_PROJECT \
+    --region $REGION
+```
