@@ -24,3 +24,6 @@ gcloud beta run jobs delete $JOB_NAME \
     --project $GOOGLE_PROJECT \
     --region $REGION
 ```
+
+#### Reference
+https://zenn.dev/nekoshita/articles/cf39a31f3052bf
